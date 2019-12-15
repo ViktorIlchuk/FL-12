@@ -1,0 +1,232 @@
+
+@function color($key) {
+    @if map-has-key($colors, $key) {
+        @return map-get($colors, $key);
+    }
+  
+    @warn "Unknown `#{$key}` in $colors.";
+    @return null;
+  }
+
+@mixin button {
+    background-color: color(button_color);
+    padding: 10px 30px;
+    border: none;
+    font-size: 12px;
+    border-radius: 3px;
+    color: color(section_card_heading);
+}
+
+@mixin link {
+    color: color(link_color);
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    font-family: $logo_font;
+    color: color(main_fonts_color);
+    background-color: color(main_section_bg);
+  }
+
+header {
+    background-image: $background_img;
+    background-position: center;
+    background-size: cover;
+    border-radius: 0 0 40% 0;
+    background-color: color(main_section_bg);
+    .header-wrap {
+        padding: 15px 120px 0;
+
+        .header_heading {
+            font-size: 50px;
+            padding-right: 50%;
+            margin: 30px 0 ;
+            font-family: $header_font;
+            font-weight: bold;
+            line-height: 1;
+            position: relative;
+            z-index: 100;
+            &::after{
+                content: '';
+                position: absolute;
+                z-index: -100;
+                border-bottom: 35px solid color(underline_color);
+                width: 210px;
+                top: 64%;
+                left: 0;
+            }    
+        }
+        
+        .header_text{
+            font-weight: lighter;
+            line-height: 1.5;
+            font-size: 11px;  
+            white-space: pre-line;
+        }
+        
+        button{
+            @include button;
+            margin: 30px 0 110px 0;
+        }
+
+        .login {
+            @include link;
+            margin-left: 100px;
+            font-size: 12px;
+        }
+    }
+}
+
+.landing-logo {
+    display: flex;   
+    img{
+        height: 35px;
+    }
+    p{
+        font-size: 17px;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+        margin: 5px;
+        span{
+            font-size: 9px;
+            text-align: center;
+        }
+    }           
+}
+
+
+.section_text {
+    text-align: center; 
+    font-size: 30px;  
+    position: relative;
+    z-index: 100; 
+    &::after{
+        content: '';
+        position: absolute;
+        z-index: -100;
+        border-bottom: 35px solid color(underline_color);
+        width: 133px;
+        right: 38.8%;
+    }
+}
+
+.section_card_wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    .section_card {
+        display: flex;
+        margin: 0 20% 20px 20%;       
+        text-align: center;
+        background-color: color(section_card_background);
+        border-radius: 4px;
+
+        .section_card_img{
+            width: 70%;
+            margin: 10px;
+            border-radius: 3px;
+        }
+
+        .section_card_right_container {
+
+            .section_card_heading {
+                color: color(section_card_heading);
+            }
+
+            .section_card_text {
+                color: color(text_color);
+                font-size: 12px;
+                font-weight: lighter;
+                margin: 20px 65px 10px 65px;
+                text-align: justify;
+            }
+
+            .section_link {
+                @include link;
+                font-size: 12px;
+                margin-bottom: 20px;
+            }
+        }
+    }    
+}
+
+.section_banner{
+    display: flex;
+    background: linear-gradient(0.25turn, color(baner_gradient_left), color(baner_gradient_right));
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    position: absolute;
+    width: 64%;
+    right: 18%;
+    margin-top: 80px;
+    .section_banner_heading{
+        font-size: 22px;
+        margin-bottom: 0;
+        position: relative;
+        z-index: 100;
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: -100;
+            border-bottom: 35px solid color(underline_color);
+            width: 44px;
+            right: 55%;
+            bottom: 25%;
+        }
+    }
+
+    .section_banner_text{
+        font-size: 11px;
+        margin-top: 0;
+        color: color(text_color);
+    }
+    .section_banner_button{
+        @include button;
+        width: 100px;
+        height: 30px;
+        padding: 0;
+        font-size: 12px;
+    }
+}
+
+.footer-wrap{
+    background-color: color(section_card_background);
+    color: color(section_card_heading);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 10% 35px 10%;
+    margin-top: 150px;
+    color: color(text_color);
+
+    .footer_logo {
+        @extend .landing-logo;
+
+        img {
+            height: 30px;
+        }
+
+        p {
+            font-size: 14px;
+            
+            span {
+                font-size: 6px;
+            }
+        }
+    }
+
+    .footer_text{
+        width: 21%;
+        font-size: 9px;
+    }
+
+    .footer-cr {
+        font-size: 10px;        
+    }
+}
+
+
