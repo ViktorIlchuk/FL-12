@@ -1,0 +1,29 @@
+/* Todo: your styles go here*/
+ul li:before { 
+  font-family: 'Material Icons';
+  content: 'folder';
+  margin:0 5px 0 -15px;
+  color: rgb(236, 167, 50);
+}
+
+ul {
+  list-style: none;
+  /* padding-inline-start: 20px; */
+  
+}
+
+ul span:hover {
+  background-color: rgb(205,201,183);
+}
+
+span :hover {
+  font-weight: bold;
+}
+
+span {
+  cursor: pointer;
+}
+
+.material-icons {
+  font-family: none;
+}
